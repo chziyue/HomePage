@@ -1,4 +1,4 @@
-# My Home Page
+# Home Page
 
 个人导航主页项目，用于快速访问常用网站和服务。
 
