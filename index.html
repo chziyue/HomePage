@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Home Page</title>
+    <style>
+        /* 设置body样式 */
+        body {
+            font-family: Arial, sans-serif; /* 设置字体 */
+            background: linear-gradient(to bottom, #b3e0ff 0%, #e6ccff 100%); /* 背景渐变 */
+            margin: 0; /* 移除默认外边距 */
+            padding: 20px 10px; /* 设置内边距 */
+            min-height: 100vh; /* 最小高度为视口高度 */
+            -webkit-user-select: none; /* 禁止用户选择文本（WebKit浏览器） */
+            -moz-user-select: none; /* 禁止用户选择文本（Firefox） */
+            -ms-user-select: none; /* 禁止用户选择文本（IE/Edge） */
+            user-select: none; /* 禁止用户选择文本（标准语法） */
+        }
+
+
+        /* 设置h1样式 */
+        h1 {
+            text-align: center; /* 文本居中 */
+            color: #2c3e50; /* 设置颜色 */
+            margin-bottom: 10px; /* 下外边距 */
+            font-size: 2.5em; /* 字体大小 */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* 文字阴影 */
+        }
+
+
+        /* 设置网格容器样式 */
+        .grid {
+            display: grid; /* 使用网格布局 */
+            grid-template-columns: repeat(8, 1fr); /* 8列等宽布局 */
+            gap: 20px; /* 网格间隙 */
+            max-width: 1400px; /* 最大宽度 */
+            margin: 0 auto; /* 水平居中 */
+            padding: 20px 20px 10px; /* 内边距 */
+        }
+
+        /* 设置网站链接样式 */
+        .site {
+            display: flex; /* 弹性布局 */
+            flex-direction: column; /* 垂直方向排列 */
+            justify-content: space-between; /* 两端对齐 */
+            align-items: center; /* 水平居中 */
+            text-decoration: none; /* 移除下划线 */
+            color: #333333; /* 文字颜色 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
+            background-color: rgba(255, 255, 255, 0.2); /* 背景色 */
+            border-radius: 15px; /* 圆角 */
+            padding: 15px; /* 内边距 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3); /* 阴影效果 */
+            height: 130px; /* 高度 */
+            backdrop-filter: blur(5px); /* 背景模糊效果 */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* 边框 */
+        }
+
+
+        /* 网站链接悬停效果 */
+        .site:hover {
+            transform: translateY(-5px); /* 上移 */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3); /* 增强阴影 */
+        }
+
+
+        /* 网站图标样式 */
+        .site img {
+            width: 80px; /* 宽度 */
+            height: 80px; /* 高度 */
+            object-fit: contain; /* 保持比例填充 */
+            margin-top: 10px; /* 上外边距 */
+            border-radius: 12px; /* 圆角 */
+            margin-bottom: 10px; /* 下外边距 */
+            transition: transform 0.3s ease; /* 过渡效果 */
+        }
+
+        /* 网站图标悬停效果 */
+        .site:hover img {
+            transform: rotate(5deg); /* 旋转 */
+        }
+
+        /* 网站名称样式 */
+        .site span {
+            font-size: 15px; /* 字体大小 */
+            font-weight: bold; /* 加粗 */
+            text-align: center; /* 文本居中 */
+            transition: color 0.3s ease; /* 颜色过渡效果 */
+            max-width: 100%; /* 最大宽度 */
+            overflow: hidden; /* 溢出隐藏 */
+            text-overflow: ellipsis; /* 文本溢出显示省略号 */
+            white-space: nowrap; /* 不换行 */
+        }
+
+
+        /* 网站名称悬停效果 */
+        .site:hover span {
+            color: #2c3e50; /* 改变颜色 */
+        }
+
+        /* 响应式布局 - 中等屏幕 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* 减小内边距 */
+            }
+
+            h1 {
+                font-size: 2em; /* 减小字体大小 */
+                margin-bottom: 30px; /* 增加下外边距 */
+            }
+
+            .grid {
+                grid-template-columns: repeat(3, 1fr); /* 3列布局 */
+                gap: 10px; /* 减小间隙 */
+                padding: 10px; /* 减小内边距 */
+            }
+
+            .site {
+                padding: 10px; /* 减小内边距 */
+                height: 150px; /* 增加高度 */
+            }
+
+            .site img {
+                width: 70px; /* 减小图标尺寸 */
+                height: 70px;
+            }
+
+            .site span {
+                font-size: 12px; /* 减小字体大小 */
+            }
+        }
+
+        /* 响应式布局 - 小屏幕 */
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* 2列布局 */
+            }
+
+            .site {
+                height: 130px; /* 减小高度 */
+            }
+
+            .site img {
+                width: 60px; /* 进一步减小图标尺寸 */
+                height: 60px;
+            }
+
+            .site span {
+                font-size: 11px; /* 进一步减小字体大小 */
+            }
+        }
+
+        /* 页面按钮样式 */
+        .page-button {
+            position: relative; /* 相对定位 */
+            display: inline-block; /* 行内块级元素 */
+            padding: 0.8em 1.5em; /* 内边距 */
+            text-decoration: none; /* 移除下划线 */
+            text-align: center; /* 文本居中 */
+            font-size: 15px;    /* 字体大小 */
+            cursor: pointer; /* 鼠标指针样式 */
+            user-select: none; /* 禁止文本选择 */
+            color: white; /* 文字颜色 */
+            margin-bottom: 0; /* 下外边距 */
+            min-width: 113px; /* 最小宽度 */
+        }
+
+
+        /* 页面按钮伪元素 - 背景 */
+        .page-button::before {
+            content: ''; /* 空内容 */
+            position: absolute; /* 绝对定位 */
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3); /* 渐变背景 */
+            border-radius: 4px; /* 圆角 */
+            transition: box-shadow .5s ease, transform .2s ease; /* 过渡效果 */
+            will-change: transform; /* 优化性能 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2); /* 阴影 */
+            transform:
+                translateY(var(--ty, 0))
+                rotateX(var(--rx, 0))
+                rotateY(var(--ry, 0))
+                translateZ(var(--tz, -12px)); /* 3D变换 */
+        }
+
+
+        /* 页面按钮悬停效果 */
+        .page-button:hover::before {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .3); /* 增强阴影 */
+        }
+
+        /* 页面按钮伪元素 - 文本 */
+        .page-button::after {
+            position: relative; /* 相对定位 */
+            display: inline-block; /* 行内块级元素 */
+            content: attr(data-title); /* 使用data-title属性作为内容 */
+            transition: transform .2s ease; /* 过渡效果 */
+            font-weight: bold; /* 加粗 */
+            letter-spacing: .01em; /* 字间距 */
+            will-change: transform; /* 优化性能 */
+            transform:
+                translateY(var(--ty, 0))
+                rotateX(var(--rx, 0))
+                rotateY(var(--ry, 0)); /* 3D变换 */
+        }
+
+
+        /* 按钮容器样式 */
+        .button-container {
+            grid-column: 1 / -1; /* 跨越所有列 */
+            display: flex; /* 弹性布局 */
+            justify-content: flex-end; /* 右对齐 */
+            margin-bottom: 10px; /* 下外边距 */
+            gap: 20px; /* 按钮之间的间距与卡片间距相等 */
+        }
+
+        /* 修改飞舞动画 */
+        @keyframes fly {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(var(--tx), var(--ty)) rotate(var(--tr)); }
+        }
+
+        /* 飞舞状态的网站链接样式 */
+        .site.flying {
+            animation: fly var(--duration) linear infinite alternate;
+        }
+
+        /* 添加返回动画 */
+        @keyframes return {
+            0% { transform: translate(var(--tx), var(--ty)) rotate(var(--tr)); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .site.returning {
+            animation: return var(--return-duration) ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Home Page</h1>
+    <div class="grid" id="siteGrid">
+        <div class="button-container">
+            <a href="#" class="page-button" data-title="Toggle Effect" id="effectToggle"></a>
+            <a href="#" class="page-button" data-title="Next Page" id="pageToggle"></a>
+        </div>
+    </div>
+
+    <script>
+        // 定义网站数组
+        const sites = [
+            //第一页
+            //第一行
+            { name: "Ward", url: "http://192.168.5.254:4000/", icon: "img/ward.png" },
+            { name: "NETDATA", url: "http://192.168.5.254:19999/", icon: "img/netdata.png" },
+            { name: "Portainer", url: "http://192.168.5.254:9000/#!/2/docker/containers", icon: "img/portainer.png" },
+            { name: "Speedtest-X", url: "http://192.168.5.254:9001/", icon: "img/speedtest-x.png" },
+            { name: "smokeping", url: "http://192.168.5.254:1080/", icon: "img/smokeping.png" },
+            { name: "Recorder", url: "http://192.168.5.254:2356/ui/recorder/local", icon: "img/recorder.png" },
+            { name: "AList", url: "http://192.168.5.254:5244/", icon: "img/alist.png" },
+            { name: "AriaNG", url: "http://192.168.5.254:8090/", icon: "img/ariang.png" },
+            //第二行
+            { name: "Memos", url: "http://192.168.5.254:5230/", icon: "img/memos.png" },
+            { name: "Qwen", url: "https://www.qianwen.com/", icon: "img/Qwen.png" },
+            { name: "DeepSeek", url: "https://chat.deepseek.com/", icon: "img/DeepSeek.png" },
+            { name: "ESXi", url: "https://192.168.5.99/", icon: "img/ESXi.png" },
+            { name: "fnOS", url: "https://192.168.5.98/", icon: "img/fnOS.png" },
+            { name: "Wiki", url: "http://192.168.5.254:7000/", icon: "img/wiki.png" },
+            { name: "OpenWrt", url: "http://192.168.5.251/", icon: "img/OpenWrt.png" },
+            { name: "ZTE Router", url: "http://192.168.5.1/", icon: "img/router.png" },
+            //第三行
+            { name: "npm", url: "http://192.168.5.254:81/", icon: "img/npm.png" },
+            { name: "Gitea", url: "http://192.168.5.254:3000/", icon: "img/gitea.png" },
+            { name: "DNSPod", url: "https://console.cloud.tencent.com/cns", icon: "img/tencent.png" },
+            { name: "taobao", url: "https://www.taobao.com/", icon: "img/taobao.png" },
+            { name: "jd", url: "https://www.jd.com/", icon: "img/jd.png" },
+            { name: "bilibili", url: "https://www.bilibili.com/", icon: "img/bilibili.png" },
+            { name: "Jellyfin", url: "http://192.168.5.254:8096/", icon: "img/jellyfin.png" },
+            { name: "CPU", url: "https://cpu.bmcx.com/", icon: "img/cpu.png" },
+            
+            //第四行
+            { name: "Baidu", url: "https://www.baidu.com/", icon: "img/baidu.png" },
+            { name: "Google", url: "https://www.google.com/", icon: "img/google.png" },
+            { name: "Bing", url: "https://www.bing.com/", icon: "img/bing.png" },
+            { name: "YouTube", url: "https://www.youtube.com/", icon: "img/youtube.png" },
+            { name: "GitHub", url: "https://github.com/", icon: "img/github.png" },
+            { name: "dockerhub", url: "https://hub.docker.com/", icon: "img/docker.png" },
+            { name: "translate", url: "https://fanyi.baidu.com/", icon: "img/fanyi.png" },
+            { name: "chziyue.github.io", url: "https://chziyue.github.io/", icon: "img/chziyue.png" },
+
+            //第二页
+            { name: "icloud", url: "https://www.icloud.com.cn/", icon: "img/icloud.png" },
+            { name: "douban", url: "https://www.douban.com/", icon: "img/douban.png" },
+            { name: "composerize", url: "https://chziyue.top/docker-to-compose/", icon: "img/composerize.png" },
+            { name: "DosGame", url: "http://192.168.5.254:8262/", icon: "img/game.png" },
+            { name: "Sync", url: "http://192.168.5.254:8888/", icon: "img/sync.png" },
+            { name: "Pingvin-Share", url: "http://192.168.5.254:8088/", icon: "img/pingvin.png" },
+        ];
+
+        // 获取DOM元素
+        const siteGrid = document.getElementById('siteGrid');
+        const buttonContainer = siteGrid.querySelector('.button-container');
+        const pageButton = buttonContainer.querySelector('#pageToggle');
+        const effectButton = buttonContainer.querySelector('#effectToggle');
+
+        // 初始化当前页码和每页显示的网站数量
+        let currentPage = 1;
+        const sitesPerPage = 32;
+
+        // 初始化特效状态
+        let effectEnabled = localStorage.getItem('effectEnabled') === 'true';
+
+        // 显示网站函数
+        function displaySites() {
+            // 移除现有的网站元素
+            while (siteGrid.children.length > 1) {
+                siteGrid.removeChild(siteGrid.lastChild);
+            }
+
+            // 计算当前页的起始和结束索引
+            const startIndex = (currentPage - 1) * sitesPerPage;
+            const endIndex = Math.min(startIndex + sitesPerPage, sites.length);
+
+            // 循环创建网站元素
+            for (let i = startIndex; i < endIndex; i++) {
+                const site = sites[i];
+                // 创建网站链接元素
+                const siteElement = document.createElement('a');
+                siteElement.href = site.url;
+                siteElement.className = 'site';
+                siteElement.target = '_blank';
+                siteElement.rel = 'noopener noreferrer';
+
+                // 创建网站图标元素
+                const img = document.createElement('img');
+                img.src = site.icon;
+                img.alt = `${site.name} icon`;
+                img.width = 90;
+                img.height = 90;
+
+                // 创建网站名称元素
+                const span = document.createElement('span');
+                span.textContent = site.name;
+
+                // 将图标和名称添加到链接元素中
+                siteElement.appendChild(img);
+                siteElement.appendChild(span);
+
+                // 将链接元素添加到网格中
+                siteGrid.appendChild(siteElement);
+            }
+
+            // 更新按钮文本
+            pageButton.setAttribute('data-title', currentPage === 1 ? 'Next Page' : 'Previous Page');
+            effectButton.setAttribute('data-title', effectEnabled ? 'Disable Effect' : 'Enable Effect');
+        }
+
+        // 为页面按钮添加点击事件监听器
+        pageButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentPage = currentPage === 1 ? 2 : 1; // 切换页面
+            displaySites(); // 重新显示网站
+        });
+
+        // 为特效按钮添加点击事件监听器
+        effectButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            effectEnabled = !effectEnabled;
+            localStorage.setItem('effectEnabled', effectEnabled);
+            displaySites(); // 更新按钮文本
+            if (effectEnabled) {
+                resetInactivityTimer();
+            } else {
+                clearTimeout(inactivityTimer);
+                if (isFlying) {
+                    stopFlying();
+                }
+            }
+        });
+
+        // 添加不活动检测和飞舞效果
+        let inactivityTimer;
+        let isFlying = false;
+
+        // 重置不活动计时器
+        function resetInactivityTimer() {
+            if (!effectEnabled) return;
+            clearTimeout(inactivityTimer);
+            if (isFlying) {
+                stopFlying();
+            }
+            inactivityTimer = setTimeout(startFlying, 3000); // 3秒后开始飞舞
+        }
+
+        // 获取随机偏移量
+        function getRandomOffset() {
+            return (Math.random() - 0.5) * 400; // 随机偏移 -200px 到 200px
+        }
+
+        // 获取随机旋转角度
+        function getRandomRotation() {
+            return (Math.random() - 0.5) * 60; // 随机旋转 -30deg 到 30deg
+        }
+
+        // 获取随机动画持续时间
+        function getRandomDuration() {
+            return 3 + Math.random() * 4; // 随机持续时间 3-7 秒
+        }
+
+        // 开始飞舞效果
+        function startFlying() {
+            isFlying = true;
+            document.querySelectorAll('.site').forEach(site => {
+                // 为每个网站元素设置随机的变换属性
+                const tx = getRandomOffset();
+                const ty = getRandomOffset();
+                const tr = getRandomRotation();
+                const duration = getRandomDuration();
+                
+                // 设置CSS自定义属性
+                site.style.setProperty('--tx', `${tx}px`);
+                site.style.setProperty('--ty', `${ty}px`);
+                site.style.setProperty('--tr', `${tr}deg`);
+                site.style.setProperty('--duration', `${duration}s`);
+                
+                // 添加飞舞类
+                site.classList.add('flying');
+            });
+        }
+
+        function stopFlying() {
+            isFlying = false;
+            const sites = document.querySelectorAll('.site');
+            
+            // 计算所有网站元素中的最大距离
+            const maxDistance = Math.max(...Array.from(sites).map(site => {
+                const rect = site.getBoundingClientRect();
+                return Math.sqrt(rect.left * rect.left + rect.top * rect.top);
+            }));
+
+            sites.forEach(site => {
+                // 获取当前变换状态
+                const computedStyle = window.getComputedStyle(site);
+                const transform = new DOMMatrix(computedStyle.transform);
+                const currentX = transform.m41;
+                const currentY = transform.m42;
+                const currentRotation = Math.atan2(transform.m21, transform.m11) * (180 / Math.PI);
+
+                // 设置CSS自定义属性，用于返回动画
+                site.style.setProperty('--tx', `${currentX}px`);
+                site.style.setProperty('--ty', `${currentY}px`);
+                site.style.setProperty('--tr', `${currentRotation}deg`);
+
+                // 计算返回动画的持续时间
+                const distance = Math.sqrt(currentX * currentX + currentY * currentY);
+                const returnDuration = Math.min(Math.max(distance / 200, 0.3), 0.8); // 最小0.3秒，最大0.8秒
+                site.style.setProperty('--return-duration', `${returnDuration}s`);
+
+                // 移除飞舞类
+                site.classList.remove('flying');
+                
+                // 在下一帧添加返回类，确保样式更新
+                requestAnimationFrame(() => {
+                    site.classList.add('returning');
+                });
+
+                // 动画结束后清理样式
+                site.addEventListener('animationend', function onAnimationEnd() {
+                    site.classList.remove('returning');
+                    site.style.removeProperty('--tx');
+                    site.style.removeProperty('--ty');
+                    site.style.removeProperty('--tr');
+                    site.style.removeProperty('--duration');
+                    site.style.removeProperty('--return-duration');
+                    site.removeEventListener('animationend', onAnimationEnd);
+                }, { once: true });
+            });
+        }
+
+        // 添加事件监听器以重置不活动计时器
+        ['mousemove', 'keydown', 'click', 'scroll'].forEach(eventType => {
+            document.addEventListener(eventType, resetInactivityTimer);
+        });
+
+        // 初始化不活动计时器（仅当特效启用时）
+        if (effectEnabled) {
+            resetInactivityTimer();
+        }
+
+        // 初始显示网站
+        displaySites();
+
+        // 改进卡片返回动画
+        function improveCardReturnAnimation() {
+            const card = document.querySelector('.card');
+            
+            // 使用 requestAnimationFrame 来优化动画性能
+            function animate() {
+                // 在这里添加动画逻辑
+                // 例如: card.style.transform = `translateX(${x}px)`;
+                
+                requestAnimationFrame(animate);
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        // 在适当的时机调用此函数
+        improveCardReturnAnimation();
+    </script>
+</body>
+</html>
